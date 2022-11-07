@@ -1,0 +1,26 @@
+[
+    {
+        "title": " The First Look PhotoShut",
+        "paragrap": "The first look is a big moment, and you have to be there to capture it. Make sure to shoot the groom’s first look at his bride in her wedding gown! If the couple agrees to it, you can get this shot in private before the ceremony.",
+        "img": "https://enviragallery.com/wp-content/uploads/2016/07/blind-fold-weddingpose.jpg",
+        "rating": "80",
+        "id": "01",
+        "price": "10$"
+    },
+    {
+        "title": " First Dance Together PhotoShut",
+        "paragrap": "A couple’s firsts are very important. Above all, you should capture as many “firsts” as you can! Usually the couple’s first dance happens at the reception, but you can also have your couple practice their first dance during their photo shoot. ",
+        "img": "https://enviragallery.com/wp-content/uploads/2016/07/dance.jpg",
+        "rating": "70",
+        "id": "02",
+        "price": "30$"
+    },
+    {
+        "title": " The Hand Kiss PhotoShut",
+        "paragrap": "For a sweet or fairytale-like shot, ask the groom to kiss the bride’s hand. This loving gesture speaks volumes about the connection the couple shares, so it makes a great addition to any wedding album.",
+        "img": "https://enviragallery.com/wp-content/uploads/2020/06/hand-kiss.png",
+        "rating": "40",
+        "id": "03",
+        "price": "40$"
+    }
+]

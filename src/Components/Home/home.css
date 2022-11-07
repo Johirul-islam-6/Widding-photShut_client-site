@@ -1,0 +1,29 @@
+.banners {
+    background-image: url('../../assent/banner.jpg');
+    width: 100%;
+    height: auto !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.header {
+    height: auto !important;
+    width: 100%;
+    background: black;
+    overflow: hidden;
+    background: #C33764;
+    /* fallback colour. Make sure this is just one solid colour. */
+    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.616)), url("https://bit.ly/2rlzaXi");
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(37, 37, 37, 0.8)), url("https://bit.ly/2rlzaXi");
+    /* The least supported option. */
+}
+
+img {
+    object-fit: cover;
+}
+
+.card {
+    border: 5px solid rgb(121, 121, 121);
+    margin: 5px;
+}
