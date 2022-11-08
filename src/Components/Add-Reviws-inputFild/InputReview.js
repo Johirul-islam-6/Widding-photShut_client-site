@@ -83,7 +83,7 @@ const InputReview = () => {
                         <br></br>
                         <div className="col-span-full sm:col-span-3">
                             <label htmlFor="email" className="text-sm">Service Rating</label>
-                            <input onBlur={heldeleOnBlure} id="rating" name='rating' type="numbser" placeholder="rating..." className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-white py-2 placeholder:px-5 placeholder:text-white px-3" required />
+                            <input onBlur={heldeleOnBlure} id="rating" name='rating' type="number" placeholder="rating..." className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-white py-2 placeholder:px-5 placeholder:text-white px-3" required />
                         </div>
                         <br></br>
                         <div className="col-span-full sm:col-span-3">

@@ -25,5 +25,6 @@ img {
 
 .card {
     border: 5px solid rgb(121, 121, 121);
-    margin: 5px;
+    margin-top: 20px !important;
+    background: linear-gradient(145deg, rgb(16, 16, 16) 60%, rgba(44, 111, 246, 0.712));
 }

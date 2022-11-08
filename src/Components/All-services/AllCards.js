@@ -26,7 +26,7 @@ const AllCards = ({ services, index }) => {
                     </div>
                     <p>{services?.paragrap.slice(0, 100)}</p>
                     <div className="card-actions justify-between">
-                        <h1 className="text-1xl text-success">Price : {services?.price}</h1>
+                        <h1 className="text-1xl text-success">1 Hour : {services?.price}</h1>
                         <Link to={`/card_details/${services?._id}`} className=" px-8 py-[6px] btn-secondary rounded-lg text-black">Details..</Link>
                     </div>
                 </div>

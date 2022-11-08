@@ -11,6 +11,7 @@ import MyReviws from "../Components/My-Reviews/MyReviws";
 import PrivetRoute from "../PrivetRoutes/PrivetRoute";
 import InputReview from "../Components/Add-Reviws-inputFild/InputReview";
 import AddServices from "../Components/Add-Services/AddServices";
+import UpdatePage from "../Components/Updates/UpdatePage";
 
 const router = createBrowserRouter([
 
@@ -46,6 +47,12 @@ const router = createBrowserRouter([
             {
                 path: '/my-reviews',
                 element: (<PrivetRoute><MyReviws></MyReviws></PrivetRoute>),
+
+            },
+            {
+                path: '/update/:id',
+                element: <UpdatePage></UpdatePage>,
+                loader: ({ params }) => fetch(`http://localhost:5000/all-reviews/${params.id}`)
 
             },
             {

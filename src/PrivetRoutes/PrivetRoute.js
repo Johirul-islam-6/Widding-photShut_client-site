@@ -6,7 +6,7 @@ import { AuthContext } from '../Contexts/UseContext';
 const PrivetRoute = ({ children }) => {
     const { user, loding } = useContext(AuthContext)
     const location = useLocation()
-    console.log(location);
+    // console.log(location);
     //loding condition
     if (loding) {
         // console.log("Loding runing");

@@ -45,7 +45,7 @@ const CardDetails = () => {
                 </div>
                 <div className="w-[56%] px-5">
                     <div className="flex justify-between">
-                        <h1 className='block mb-2 dark:text-violet-400 text-3xl text-center mt-3'>Price : {price}</h1>
+                        <h1 className='block mb-2 dark:text-violet-400 text-3xl text-center mt-3'>1 Hour : {price}</h1>
                         <h1 className='block  dark:text-amber-600 text-2xl text-center mt-3'>Rasting : {rating}</h1>
 
                     </div>
