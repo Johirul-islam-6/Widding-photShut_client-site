@@ -1,14 +1,58 @@
 import React from 'react';
 import { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import { AuthContext } from '../../Contexts/UseContext';
 
 const InputReview = () => {
     const { user } = useContext(AuthContext)
     const { displayName, email, photoURL, } = user
-    console.log(displayName);
+
     const services = useLoaderData()
-    const { title, img, price, paragrap } = services
+    const { title, img, price, paragrap, _id } = services
+    console.log(_id);
+
+    const handleSubmitBtn = (event) => {
+
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const rating = form.rating.value;
+        const scliceRating = rating.slice(0, 1)
+        const message = form.message.value;
+
+        const order = {
+            service: _id,
+            serviceName: title,
+            price,
+            customer: name,
+            reting: scliceRating,
+            email,
+            message,
+        }
+
+        console.log(order)
+
+        fetch('http://localhost:5000/all-review', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(order),
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    alert('success fully set Database')
+                    event.target.reset()
+                }
+            }).catch(error => console.log(error))
+
+
+
+    }
 
     // const [user, setUser] = useState({})
 
@@ -40,9 +84,7 @@ const InputReview = () => {
 
 
 
-    const handleSubmitBtn = () => {
 
-    }
     const heldeleOnBlure = () => {
 
     }
@@ -71,6 +113,12 @@ const InputReview = () => {
                             <label htmlFor="email" className="text-sm">Service Rating</label>
                             <input onBlur={heldeleOnBlure} id="rating" name='rating' type="numbser" placeholder="rating..." className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-white py-2 placeholder:px-5 placeholder:text-white px-3" required />
                         </div>
+                        <br></br>
+                        <div className="col-span-full sm:col-span-3">
+                            <label htmlFor="email" className="text-sm">Message</label>
+                            <textarea name='message' className="textarea textarea-secondary w-full" placeholder="Bio" required></textarea>
+                        </div>
+
                     </div>
                     <br></br>
                     <div className="col-span-full sm:col-span-3">
