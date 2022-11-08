@@ -5,11 +5,12 @@ import { useContext } from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { Link, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UseContext';
+import useTitle from '../../hook/useTitle';
 import DaynamicCard from './DaynamicCard';
 
 const CardDetails = () => {
 
-
+    useTitle('Card-Details')
     const services = useLoaderData();
     const { img, title, price, rating, paragrap, _id } = services;
 
@@ -86,7 +87,7 @@ const CardDetails = () => {
                                         <h1 className="text-4xl font-bold leading-none text-center">Sign up now</h1>
                                         <p>please log in then access reviews add services</p>
                                         <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:space-x-8">
-                                            <Link to=''>
+                                            <Link to='/registrar'>
                                                 <button className="px-6 py-2 text-lg font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Sing up</button>
                                             </Link>
                                             <Link to='/login' state={{ from: location }} replace >

@@ -5,9 +5,10 @@ import { useState } from 'react';
 import { FaRegTrashAlt, FaSortAmountUpAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UseContext';
+import useTitle from '../../hook/useTitle';
 
 const MyReviws = () => {
-
+    useTitle('My-Reviews')
     const { user } = useContext(AuthContext);
 
     const [myReview, setReview] = useState([]);

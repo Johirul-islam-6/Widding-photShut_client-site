@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Contexts/UseContext';
+import useTitle from '../hook/useTitle';
 
 const Login = () => {
+    useTitle('Log in')
     //import UserContextFile
     const { user, singInPage, singInAutoGoogle, forGetPass } = useContext(AuthContext)
     //amra jodi forget password er somoy database teke email er password pawar jonno

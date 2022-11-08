@@ -1,31 +1,39 @@
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import useTitle from '../../hook/useTitle';
 
 const UpdatePage = () => {
+    useTitle('Update-Review')
+    const navigate = useNavigate()
 
     const storeUser = useLoaderData();
-    const { customer, message, img, email, price, serviceName, time, service, reting } = storeUser;
-    console.log(storeUser);
+    const { customer, message, img, email, price, serviceName, time, service, reting, _id } = storeUser;
+    // console.log(storeUser);
 
     const [user, setUser] = useState(storeUser)
 
     const handleSubmitBtn = (event) => {
         event.preventDefault()
-        console.log(user);
-        // fetch(`http://localhost:5000/users/${user._id}`, {
-        //     method: "PUT",
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(user)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         if (data.modifiedCount > 0) {
-        //             alert('user uptade information successs !')
-        //         }
-        //         console.log(data)
-        //     })
+        // console.log(user);
+        fetch(`http://localhost:5000/all-reviews/${storeUser?._id}`, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    alert('user uptade information successs !');
+                    navigate('/my-reviews');
+
+                } else {
+                    console.log("sallar data")
+
+                }
+                console.log(data)
+            })
     }
     //all input fild value onblure
     const heldeleOnBlure = (event) => {
@@ -63,7 +71,7 @@ const UpdatePage = () => {
                         <br></br>
                         <div className="col-span-full sm:col-span-3">
                             <label htmlFor="email" className="text-sm">Message</label>
-                            <textarea name='message' defaultValue={message} className="textarea textarea-secondary w-full" placeholder="Bio" required></textarea>
+                            <textarea onChange={heldeleOnBlure} name='message' defaultValue={message} className="textarea textarea-secondary w-full" placeholder="Bio" required></textarea>
                         </div>
 
                     </div>

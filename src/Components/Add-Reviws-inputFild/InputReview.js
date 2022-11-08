@@ -1,11 +1,14 @@
 import React from 'react';
 import { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { AuthContext } from '../../Contexts/UseContext';
+import useTitle from '../../hook/useTitle';
 
 const InputReview = () => {
+    useTitle('Review-Field')
     const { user } = useContext(AuthContext)
+    const navigate = useNavigate();
     const { displayName, email, photoURL, metadata } = user
 
     const services = useLoaderData()
@@ -49,6 +52,7 @@ const InputReview = () => {
                 if (data.acknowledged) {
                     alert('success fully set Database')
                     event.target.reset()
+                    navigate('/all-services')
                 }
             }).catch(error => console.log(error))
 

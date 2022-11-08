@@ -12,6 +12,7 @@ import PrivetRoute from "../PrivetRoutes/PrivetRoute";
 import InputReview from "../Components/Add-Reviws-inputFild/InputReview";
 import AddServices from "../Components/Add-Services/AddServices";
 import UpdatePage from "../Components/Updates/UpdatePage";
+import Block from "../Components/Block-Page/Block"
 
 const router = createBrowserRouter([
 
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/block',
-                element: <Home></Home>
+                element: <Block></Block>
             },
             {
                 path: '/all-services',

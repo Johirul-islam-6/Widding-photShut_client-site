@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export class Footer extends Component {
     render() {
         return (
-            <footer className="footer p-10 bg-base-300 text-base-content">
+            <footer className="footer p-10 bg-base-300 text-base-content mt-10">
                 <div>
                     <span className="footer-title">Services</span>
                     <a className="link link-hover">Branding</a>

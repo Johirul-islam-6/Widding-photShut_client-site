@@ -6,11 +6,13 @@ import Cards from './Cards';
 import './home.css'
 
 import { Link } from 'react-router-dom';
+import useTitle from '../../hook/useTitle';
 
 const Home = () => {
 
     const [services, setServices] = useState([]);
 
+    useTitle('Home')
 
     useEffect(() => {
         fetch('http://localhost:5000/services')

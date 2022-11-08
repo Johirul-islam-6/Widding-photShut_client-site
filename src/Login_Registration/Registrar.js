@@ -3,10 +3,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Contexts/UseContext';
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
+import useTitle from '../hook/useTitle';
 
 
 const Registrar = () => {
-
+    useTitle('Registration')
     const navigat = useNavigate()
     //user jodi login ar age onno kono page jete cay tar jonno
     const location = useLocation()
