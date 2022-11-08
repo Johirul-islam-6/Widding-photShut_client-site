@@ -9,12 +9,16 @@ import UseContext from './Contexts/UseContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <div className='max-w-7xl mx-auto'>
-  <div className=''>
-    <UseContext>
-      <App />
-    </UseContext>
-  </div>
+  <>
+
+
+
+    <div className=''>
+      <UseContext>
+        <App />
+      </UseContext>
+    </div>
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function

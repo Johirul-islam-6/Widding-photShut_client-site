@@ -1,21 +1,31 @@
 import React from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link } from 'react-router-dom';
 
-const Cards = ({ services }) => {
-    console.log(services);
+const Cards = ({ services, index }) => {
+    // console.log(services);
     return (
         <>
             <div className="card max-w-[300px]  bg-violet-900 shadow-xl mt-3  ">
-                <figure><img className='' src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+
+                <PhotoProvider>
+                    <div className="foo">
+                        <PhotoView key={index} src={services?.img}>
+                            <img className='h-52 w-full' src={services?.img} alt="" />
+                        </PhotoView>
+                    </div>
+                </PhotoProvider>
+                {/* ----------------phot zoom ent--------------- */}
+
                 <div className="card-body">
-                    <h2 className="card-title">
-                        Shoes!
-                        <div className="badge badge-secondary">NEW</div>
-                    </h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <div className="justify-between flex">
+                        <h2 className="card-title"> {services?.title} </h2>
+                        <div className="badge badge-secondary ml-2">{services?.rating}</div>
+                    </div>
+                    <p>{services?.paragrap.slice(0, 100)}</p>
                     <div className="card-actions justify-between">
-                        <h1 className="">Price : 10$</h1>
-                        <Link className=" px-8 py-[6px] btn-secondary rounded-lg text-black">Details..</Link>
+                        <h1 className="text-1xl text-success">Price : {services?.price}</h1>
+                        <Link to={`/card_details/${services?._id}`} className=" px-8 py-[6px] btn-secondary rounded-lg text-black">Details..</Link>
                     </div>
                 </div>
             </div>

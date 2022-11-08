@@ -1,28 +1,94 @@
 import React from 'react';
+import { useContext } from 'react';
+import { FaRegTrashAlt } from 'react-icons/fa';
+import { Link, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/UseContext';
 
 const CardDetails = () => {
+
+    const { user } = useContext(AuthContext);
+    //location
+    const navigat = useNavigate()
+    const location = useLocation()
+    // const froms = location?.state?.from?.pathname || '/all-services';
+
+    const services = useLoaderData();
+    const { img, title, price, rating, paragrap } = services
     return (
         <>
-            <div className="div w-[100%] grid md:flex lg:flex ">
-                <div className="w-[50%] px-5">
-                    <span className="block mb-2 dark:text-violet-400 text-3xl text-center my-2">Mamba design system</span>
-                    <img src="https://source.unsplash.com/random/480x360" alt="" className="object-cover w-full rounded-md xl:col-span-3 dark:bg-gray-500" />
+            <div className="div w-[100%] grid md:flex lg:flex lg:px-20 ">
+                <div className="w-[40%] px-5">
+
+                    <img src={img} alt="" className="object-cover  rounded-md xl:col-span-3 dark:bg-gray-500 w-full" />
                 </div>
-                <div className="w-[50%] px-5">
+                <div className="w-[56%] px-5">
                     <div className="flex justify-between">
-                        <h1 className='block mb-2 dark:text-violet-400 text-3xl text-center mt-10'>Price : 200$</h1>
-                        <h1 className='block mb-2 dark:text-amber-600 text-2xl text-center mt-10'>Rasting : 20%</h1>
+                        <h1 className='block mb-2 dark:text-violet-400 text-3xl text-center mt-3'>Price : {price}</h1>
+                        <h1 className='block  dark:text-amber-600 text-2xl text-center mt-3'>Rasting : {rating}</h1>
 
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum fuga perferendis animi similique, sit quidem ad illum enim eius magni repellendus, dignissimos iusto assumenda error quas. Ad quo dolorem velit dolor asperiores nesciunt animi molestias odit cum. Dignissimos, expedita, sed aperiam nobis beatae cumque sint labore necessitatibus sequi, iste deleniti iure porro excepturi iusto nisi quos dolorem nemo aliquam nulla. Quidem velit molestiae repellat, delectus repellendus eveniet error molestias. Magni, temporibus. Enim error facere debitis, labore libero possimus minus quos expedita, cum soluta, voluptatem est corrupti nobis quod vitae illo iure quisquam velit? Iste, voluptatem deserunt provident officiis repellendus aliquid laudantium quibusdam! Et minus autem aspernatur harum architecto explicabo tenetur quisquam dolorem, voluptas nemo! Unde atque beatae iste molestiae. Facere?</p>
+                    <span className="block mb-3 text-slate-300 text-bold text-3xl  my-2">{title}</span>
+                    <p className='text-[19px] '>{paragrap}.. <br></br> <br></br>Priya gets cold feet during her wedding. Asha encourages her, realizing in turn that she truly loves Ravi. She goes to his family's restaurant to see him with another woman, and gives a speech about what a great guy he is. Priya and Nick marry and introduce DJ Spellbound at the reception.</p>
                 </div>
 
+                {/* --------------optional section----------- */}
+
+
             </div>
+            <section>
+                <div className="h-[auto] py-10  lg:px-20 mt-10">
+
+                    {
+                        user?.email ?
+                            <>
+                                {/* -----add review page--------- */}
+                                <section className="py-6 dark:bg-gray-800 dark:text-gray-50">
+                                    <div className="container mx-auto flex flex-col items-center justify-center p-4 space-y-8 md:p-10 lg:space-y-0 lg:flex-row lg:justify-between">
+                                        <div className="block">
+                                            <h1 className="text-3xl font-semibold leading-tight text-center lg:text-left">You are can add review this services ! </h1>
+                                            <p className='pl-1 py-2 text-2xl text-center md:text-start lg:text-start '>Total Reviws : 50+..</p>
+                                        </div>
+                                        <Link to={`/add-reviws/${services?._id}`}>
+                                            <button className="px-8 py-3 text-lg font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Add Reviews</button>
+                                        </Link>
+
+                                    </div>
+                                </section>
+                                {/* -----add review page--------- */}
+                            </>
+                            :
+                            <>
+                                {/* ----singup now----- */}
+                                <section className="py-6 dark:bg-gray-800 dark:text-gray-50">
+                                    <div className="container mx-auto flex flex-col items-center justify-center p-4 space-y-8 md:p-10 md:px-24 xl:px-48">
+                                        <h1 className="text-4xl font-bold leading-none text-center">Sign up now</h1>
+                                        <p>please log in then access reviews add services</p>
+                                        <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:space-x-8">
+                                            <Link to=''>
+                                                <button className="px-6 py-2 text-lg font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Sing up</button>
+                                            </Link>
+                                            <Link to='/login' state={{ from: location }} replace >
+                                                <button className="px-6 py-2 text-lg font-normal border rounded dark:bg-gray-100 dark:text-gray-900 dark:border-gray-300">Log in</button>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </section>
+                                {/* ----singup now----- */}
+
+                            </>
+                    }
+
+
+
+
+                </div>
+            </section>
 
             {/* All review this collaction */}
-            <section>
-                <div className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100">
-                    <div className="flex justify-between">
+            <section className='flex justify-center lg:px-20 my-10 bgs'>
+                <div className="flex flex-col w-full p-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100 ">
+                    {/* ------card details reviews------ */}
+                    <div className="flex justify-between pb-10">
                         <h2 className="text-xl font-semibold">Your cart</h2>
                         <div className="space-y-1 text-right">
                             <p>Total Reviews:
@@ -31,115 +97,69 @@ const CardDetails = () => {
                             <p className="text-sm dark:text-gray-400">Not including taxes and shipping costs</p>
                         </div>
                     </div>
-                    <ul className="flex flex-col divide-y divide-gray-700">
-                        <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
-                            <div className="flex w-full space-x-2 sm:space-x-4">
-                                <img className="flex-shrink-0 object-cover w-20 h-20 dark:border-transparent rounded outline-none sm:w-32 sm:h-32 dark:bg-gray-500" src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-1.2.1&amp;ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80" alt="Polaroid camera" />
-                                <div className="flex flex-col justify-between w-full pb-4">
-                                    <div className="flex justify-between w-full pb-2 space-x-2">
-                                        <div className="space-y-1">
-                                            <h3 className="text-lg font-semibold leading-snug sm:pr-8">Polaroid camera</h3>
-                                            <p className="text-sm dark:text-gray-400">Classic</p>
-                                        </div>
-                                        <div className="text-right">
-                                            <p className="text-lg font-semibold">59.99€</p>
-                                            <p className="text-sm line-through dark:text-gray-600">75.50€</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex text-sm divide-x">
-                                        <button type="button" className="flex items-center px-2 py-1 pl-0 space-x-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-4 h-4 fill-current">
-                                                <path d="M96,472a23.82,23.82,0,0,0,23.579,24H392.421A23.82,23.82,0,0,0,416,472V152H96Zm32-288H384V464H128Z"></path>
-                                                <rect width="32" height="200" x="168" y="216"></rect>
-                                                <rect width="32" height="200" x="240" y="216"></rect>
-                                                <rect width="32" height="200" x="312" y="216"></rect>
-                                                <path d="M328,88V40c0-13.458-9.488-24-21.6-24H205.6C193.488,16,184,26.542,184,40V88H64v32H448V88ZM216,48h80V88H216Z"></path>
-                                            </svg>
-                                            <span>Remove</span>
-                                        </button>
-                                        <button type="button" className="flex items-center px-2 py-1 space-x-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-4 h-4 fill-current">
-                                                <path d="M453.122,79.012a128,128,0,0,0-181.087.068l-15.511,15.7L241.142,79.114l-.1-.1a128,128,0,0,0-181.02,0l-6.91,6.91a128,128,0,0,0,0,181.019L235.485,449.314l20.595,21.578.491-.492.533.533L276.4,450.574,460.032,266.94a128.147,128.147,0,0,0,0-181.019ZM437.4,244.313,256.571,425.146,75.738,244.313a96,96,0,0,1,0-135.764l6.911-6.91a96,96,0,0,1,135.713-.051l38.093,38.787,38.274-38.736a96,96,0,0,1,135.765,0l6.91,6.909A96.11,96.11,0,0,1,437.4,244.313Z"></path>
-                                            </svg>
-                                            <span>Add to favorites</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
-                            <div className="flex w-full space-x-2 sm:space-x-4">
-                                <img className="flex-shrink-0 object-cover w-20 h-20 dark:border-transparent rounded outline-none sm:w-32 sm:h-32 dark:bg-gray-500" src="https://images.unsplash.com/photo-1504274066651-8d31a536b11a?ixlib=rb-1.2.1&amp;ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80" alt="Replica headphones" />
-                                <div className="flex flex-col justify-between w-full pb-4">
-                                    <div className="flex justify-between w-full pb-2 space-x-2">
-                                        <div className="space-y-1">
-                                            <h3 className="text-lg font-semibold leading-snug sm:pr-8">Replica headphones</h3>
-                                            <p className="text-sm dark:text-gray-400">White</p>
-                                        </div>
-                                        <div className="text-right">
-                                            <p className="text-lg font-semibold">99.95€</p>
-                                            <p className="text-sm line-through dark:text-gray-600">150€</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex text-sm divide-x">
-                                        <button type="button" className="flex items-center px-2 py-1 pl-0 space-x-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-4 h-4 fill-current">
-                                                <path d="M96,472a23.82,23.82,0,0,0,23.579,24H392.421A23.82,23.82,0,0,0,416,472V152H96Zm32-288H384V464H128Z"></path>
-                                                <rect width="32" height="200" x="168" y="216"></rect>
-                                                <rect width="32" height="200" x="240" y="216"></rect>
-                                                <rect width="32" height="200" x="312" y="216"></rect>
-                                                <path d="M328,88V40c0-13.458-9.488-24-21.6-24H205.6C193.488,16,184,26.542,184,40V88H64v32H448V88ZM216,48h80V88H216Z"></path>
-                                            </svg>
-                                            <span>Remove</span>
-                                        </button>
-                                        <button type="button" className="flex items-center px-2 py-1 space-x-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-4 h-4 fill-current">
-                                                <path d="M453.122,79.012a128,128,0,0,0-181.087.068l-15.511,15.7L241.142,79.114l-.1-.1a128,128,0,0,0-181.02,0l-6.91,6.91a128,128,0,0,0,0,181.019L235.485,449.314l20.595,21.578.491-.492.533.533L276.4,450.574,460.032,266.94a128.147,128.147,0,0,0,0-181.019ZM437.4,244.313,256.571,425.146,75.738,244.313a96,96,0,0,1,0-135.764l6.911-6.91a96,96,0,0,1,135.713-.051l38.093,38.787,38.274-38.736a96,96,0,0,1,135.765,0l6.91,6.909A96.11,96.11,0,0,1,437.4,244.313Z"></path>
-                                            </svg>
-                                            <span>Add to favorites</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
-                            <div className="flex w-full space-x-2 sm:space-x-4">
-                                <img className="flex-shrink-0 object-cover w-20 h-20 dark:border-transparent rounded outline-none sm:w-32 sm:h-32 dark:bg-gray-500" src="https://images.unsplash.com/phodark:to-1594549181132-9045fed330ce?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80" alt="Set of travel chargers" />
-                                <div className="flex flex-col justify-between w-full pb-4">
-                                    <div className="flex justify-between w-full pb-2 space-x-2">
-                                        <div className="space-y-1">
-                                            <h3 className="text-lg font-semibold leading-snug sm:pr-8">Set of travel chargers</h3>
-                                            <p className="text-sm dark:text-gray-400">Black</p>
-                                        </div>
-                                        <div className="text-right">
-                                            <p className="text-lg font-semibold">8.99€</p>
-                                            <p className="text-sm line-through dark:text-gray-600">15.99€</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex text-sm divide-x">
-                                        <button type="button" className="flex items-center px-2 py-1 pl-0 space-x-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-4 h-4 fill-current">
-                                                <path d="M96,472a23.82,23.82,0,0,0,23.579,24H392.421A23.82,23.82,0,0,0,416,472V152H96Zm32-288H384V464H128Z"></path>
-                                                <rect width="32" height="200" x="168" y="216"></rect>
-                                                <rect width="32" height="200" x="240" y="216"></rect>
-                                                <rect width="32" height="200" x="312" y="216"></rect>
-                                                <path d="M328,88V40c0-13.458-9.488-24-21.6-24H205.6C193.488,16,184,26.542,184,40V88H64v32H448V88ZM216,48h80V88H216Z"></path>
-                                            </svg>
-                                            <span>Remove</span>
-                                        </button>
-                                        <button type="button" className="flex items-center px-2 py-1 space-x-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-4 h-4 fill-current">
-                                                <path d="M453.122,79.012a128,128,0,0,0-181.087.068l-15.511,15.7L241.142,79.114l-.1-.1a128,128,0,0,0-181.02,0l-6.91,6.91a128,128,0,0,0,0,181.019L235.485,449.314l20.595,21.578.491-.492.533.533L276.4,450.574,460.032,266.94a128.147,128.147,0,0,0,0-181.019ZM437.4,244.313,256.571,425.146,75.738,244.313a96,96,0,0,1,0-135.764l6.911-6.91a96,96,0,0,1,135.713-.051l38.093,38.787,38.274-38.736a96,96,0,0,1,135.765,0l6.91,6.909A96.11,96.11,0,0,1,437.4,244.313Z"></path>
-                                            </svg>
-                                            <span>Add to favorites</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                    <div className="overflow-x-auto w-full">
+                        <table className="table w-full">
 
-                    <div className="flex justify-end space-x-4">
+                            <thead>
+                                <tr>
+                                    <th>
+
+                                    </th>
+                                    <th className=''>Name</th>
+                                    <th>Email</th>
+                                    <th>Review Reting</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <th>
+                                        <label>
+                                            <span className='text-2xl hover:text-red-500 cursor-pointer'>  <FaRegTrashAlt></FaRegTrashAlt></span>
+                                        </label>
+                                    </th>
+                                    <td>
+                                        <div className="flex items-center space-x-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
+                                                    <img src="https://daisyui.com/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div className="font-bold">Hart Hagerty</div>
+                                                <div className="text-sm opacity-50">United States</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        Zemlak, Daniel and Leannon
+                                        <br />
+                                        <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                                    </td>
+                                    <td>Purple</td>
+                                    <th>
+                                        <button className="btn btn-ghost btn-xs">details</button>
+                                    </th>
+                                </tr>
+
+                            </tbody>
+
+                            <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Job</th>
+                                    <th>Favorite Color</th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+
+                        </table>
+                    </div>
+
+
+                    <div className="flex justify-end space-x-4 pt-10">
                         <button type="button" className="px-6 py-2 border rounded-md dark:border-violet-400">Back
                             <span className="sr-only sm:not-sr-only">to shop</span>
                         </button>

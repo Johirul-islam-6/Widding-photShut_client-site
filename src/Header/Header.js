@@ -75,8 +75,8 @@ const Header = () => {
                             {
                                 user?.uid ? <>
 
-                                    <Link to='/' id='logout' className='btn mx-4'>My reviews</Link>
-                                    <Link to='/' id='logout' className='btn '>Add service</Link>
+                                    <Link to='/my-reviews' className='btn mx-4'>My reviews</Link>
+                                    <Link to='/add-services' className='btn '>Add service</Link>
                                     <Link to='/' onClick={logoutBtn} id='logout' className='btn mx-4'>Log out</Link>
                                 </>
 
