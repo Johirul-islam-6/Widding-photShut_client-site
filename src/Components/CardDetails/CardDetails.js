@@ -1,19 +1,41 @@
 import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { useContext } from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { Link, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UseContext';
+import DaynamicCard from './DaynamicCard';
 
 const CardDetails = () => {
 
+
+    const services = useLoaderData();
+    const { img, title, price, rating, paragrap, _id } = services;
+
+    console.log(_id);
+    // ---------------- _id user -----------
+
+    const [allReviws, setReviws] = useState([]);
+
+    useEffect(() => {
+
+        fetch(`http://localhost:5000/all-review?service=${_id}`)
+            .then(res => res.json())
+            .then(data => setReviws(data))
+            .catch(err => console.log(err))
+
+    }, [])
+    // console.log(allReviws)
+
+
     const { user } = useContext(AuthContext);
+    // console.log(user);
     //location
     const navigat = useNavigate()
     const location = useLocation()
     // const froms = location?.state?.from?.pathname || '/all-services';
 
-    const services = useLoaderData();
-    const { img, title, price, rating, paragrap } = services
     return (
         <>
             <div className="div w-[100%] grid md:flex lg:flex lg:px-20 ">
@@ -45,8 +67,8 @@ const CardDetails = () => {
                                 <section className="py-6 dark:bg-gray-800 dark:text-gray-50">
                                     <div className="container mx-auto flex flex-col items-center justify-center p-4 space-y-8 md:p-10 lg:space-y-0 lg:flex-row lg:justify-between">
                                         <div className="block">
-                                            <h1 className="text-3xl font-semibold leading-tight text-center lg:text-left">You are can add review this services ! </h1>
-                                            <p className='pl-1 py-2 text-2xl text-center md:text-start lg:text-start '>Total Reviws : 50+..</p>
+                                            <h1 className="text-3xl font-semibold leading-tight text-center lg:text-left">You  can add review this services ! </h1>
+                                            <p className='pl-1 py-2 text-2xl text-center md:text-start lg:text-start '>Total Reviws :  <span className='text-amber-600 text-bold'>{allReviws.length} count</span></p>
                                         </div>
                                         <Link to={`/add-reviws/${services?._id}`}>
                                             <button className="px-8 py-3 text-lg font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Add Reviews</button>
@@ -78,82 +100,60 @@ const CardDetails = () => {
                             </>
                     }
 
-
-
-
                 </div>
             </section>
 
+
             {/* All review this collaction */}
+
             <section className='flex justify-center lg:px-20 my-10 bgs'>
                 <div className="flex flex-col w-full p-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100 ">
                     {/* ------card details reviews------ */}
                     <div className="flex justify-between pb-10">
                         <h2 className="text-xl font-semibold">Your cart</h2>
                         <div className="space-y-1 text-right">
-                            <p>Total Reviews:
-                                <span className="font-semibold"> 120 man</span>
+                            <p>Total Reviews :
+                                <span className="font-semibold text-amber-500"> {allReviws.length}..</span>
                             </p>
                             <p className="text-sm dark:text-gray-400">Not including taxes and shipping costs</p>
                         </div>
                     </div>
+
+
+
                     <div className="overflow-x-auto w-full">
                         <table className="table w-full">
 
-                            <thead>
-                                <tr>
-                                    <th>
 
-                                    </th>
-                                    <th className=''>Name</th>
-                                    <th>Email</th>
-                                    <th>Review Reting</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
+                            {
+                                allReviws.length > 0 ?
+                                    <>
+                                        <thead>
+                                            <tr>
+
+                                                <th className=''>Name : {allReviws.length}</th>
+                                                <th>Email</th>
+                                                <th>Review Reting</th>
+
+                                            </tr>
+                                        </thead>
+                                    </>
+                                    :
+                                    <>
+                                        <h1 className='text-center text-2xl'>Not Founded Reviews</h1>
+                                    </>
+                            }
+
+                            {/* ---table--- */}
                             <tbody>
 
-                                <tr>
-                                    <th>
-                                        <label>
-                                            <span className='text-2xl hover:text-red-500 cursor-pointer'>  <FaRegTrashAlt></FaRegTrashAlt></span>
-                                        </label>
-                                    </th>
-                                    <td>
-                                        <div className="flex items-center space-x-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src="https://daisyui.com/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="font-bold">Hart Hagerty</div>
-                                                <div className="text-sm opacity-50">United States</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Zemlak, Daniel and Leannon
-                                        <br />
-                                        <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                                    </td>
-                                    <td>Purple</td>
-                                    <th>
-                                        <button className="btn btn-ghost btn-xs">details</button>
-                                    </th>
-                                </tr>
+                                {
+                                    allReviws.map(data => <DaynamicCard user={user} data={data} key={data._id} >
 
+                                    </DaynamicCard>)
+                                }
                             </tbody>
 
-                            <tfoot>
-                                <tr>
-                                    <th></th>
-                                    <th>Name</th>
-                                    <th>Job</th>
-                                    <th>Favorite Color</th>
-                                    <th></th>
-                                </tr>
-                            </tfoot>
 
                         </table>
                     </div>

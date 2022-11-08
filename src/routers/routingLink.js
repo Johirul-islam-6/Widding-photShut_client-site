@@ -36,6 +36,7 @@ const router = createBrowserRouter([
                 path: '/card_details/:id',
                 element: <CardDetails></CardDetails>,
                 loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+
             },
             {
                 path: '/add-reviws/:id',
@@ -44,7 +45,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/my-reviews',
-                element: (<PrivetRoute><MyReviws></MyReviws></PrivetRoute>)
+                element: (<PrivetRoute><MyReviws></MyReviws></PrivetRoute>),
+
             },
             {
                 path: '/add-services',

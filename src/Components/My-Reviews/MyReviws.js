@@ -1,8 +1,27 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useContext } from 'react';
+import { useState } from 'react';
 import { FaRegTrashAlt, FaSortAmountUpAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/UseContext';
 
 const MyReviws = () => {
+
+    const { user } = useContext(AuthContext);
+
+    const [myReview, setReview] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/all-reviews?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => setReview(data))
+            .catch(err => console.log(err))
+    }, [])
+
+    console.log(myReview)
+
+
     // const user = useLoaderData();
     // console.log(user);
     // const { data } = user
@@ -38,25 +57,27 @@ const MyReviws = () => {
         <>
             <section className="p-6 dark:bg-gray-800 dark:text-gray-100 ">
 
-                <div className="grid gap-6 my-16 lg:grid-cols-3 mx-20">
+                <div className="grid gap-6 my-16 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:mx-20">
+                    {
+                        myReview.map(review =>
 
+                            <div className="flex flex-col p-8 space-y-4 rounded-md dark:bg-gray-900">
+                                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full dark:bg-violet-400 dark:text-gray-900"><img src={review?.img} alt="" /></div>
+                                <p className="lg:text-2xl text-sm  font-semibold">
+                                    <b>Service : {review?.serviceName}</b>
+                                </p>
+                                <p className="lg:text-1xl text-sm font-semibold">Email : {review?.email}</p>
+                                <p className="lg:text-1xl text-sm  font-semibold">Reating : {review?.reting}.3</p>
+                                <p className="lg:text-1xl text-sm  font-semibold">Message : {review?.message.slice(0, 50)} .</p>
 
-                    <div className="flex flex-col p-8 space-y-4 rounded-md dark:bg-gray-900">
-                        <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full dark:bg-violet-400 dark:text-gray-900">?</div>
-                        <p className="text-2xl font-semibold">
-                            <b>Name : </b>
-                        </p>
-                        <p className="text-2xl font-semibold">Email : </p>
-                        <p className="text-2xl font-semibold">ServiceName : </p>
-                        <p className="text-2xl font-semibold">rating : </p>
-                        <div className="flex">
-                            <button onClick={() => deleteBtn()} className='w-40 mx-auto bg-red-800 py-2 hover:bg-red-600 '>Delete</button>
-                            <Link to={`update/`}><button className='w-40 mx-auto bg-slate-500 py-2 hover:bg-slate-600 '>Update</button></Link>
-                        </div>
-                    </div>
+                                <div className="flex justify-between">
+                                    <button onClick={() => deleteBtn(review)} className='lg:w-40 px-5 mx-auto bg-red-800 py-2 hover:bg-red-600 '>Delete</button>
+                                    <Link to={`update/${review._id}`}><button className='lg:w-40 px-5  mx-auto bg-slate-500 py-2 hover:bg-slate-600 '>Update</button></Link>
+                                </div>
+                            </div>
 
-
-
+                        )
+                    }
                 </div>
 
             </section>

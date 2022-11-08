@@ -6,7 +6,7 @@ import { AuthContext } from '../../Contexts/UseContext';
 
 const InputReview = () => {
     const { user } = useContext(AuthContext)
-    const { displayName, email, photoURL, } = user
+    const { displayName, email, photoURL, metadata } = user
 
     const services = useLoaderData()
     const { title, img, price, paragrap, _id } = services
@@ -30,6 +30,8 @@ const InputReview = () => {
             reting: scliceRating,
             email,
             message,
+            img: photoURL,
+            time: user?.metadata?.creationTime,
         }
 
         console.log(order)
@@ -53,36 +55,6 @@ const InputReview = () => {
 
 
     }
-
-    // const [user, setUser] = useState({})
-
-    // const handleSubmitBtn = (event) => {
-    //     event.preventDefault()
-    //     // console.log(user);
-    //     fetch('http://localhost:5000/users', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(user),
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             alert('User set data to database', data)
-    //             event.target.reset()
-    //         }).catch(error => console.log(error))
-    // }
-    // //all input fild value onblure
-    // const heldeleOnBlure = (event) => {
-    //     const value = event.target.value;
-    //     const field = event.target.name;
-    //     const newUser = { ...user }
-    //     newUser[field] = value;
-    //     setUser(newUser);
-    // }
-
-
-
 
 
     const heldeleOnBlure = () => {
