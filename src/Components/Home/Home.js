@@ -12,7 +12,7 @@ const Home = () => {
 
     const [services, setServices] = useState([]);
 
-    useTitle('Home')
+    useTitle('home photographer')
 
     useEffect(() => {
         fetch('http://localhost:5000/services')
