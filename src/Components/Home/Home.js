@@ -19,8 +19,8 @@ const Home = () => {
             .then(res => res.json())
             .then(data => setServices(data))
             .catch(err => err.message)
-    }, [])
-    console.log(services);
+    }, [services])
+    // console.log(services);
 
     return (
         <>

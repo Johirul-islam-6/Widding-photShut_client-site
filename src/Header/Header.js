@@ -23,9 +23,9 @@ const Header = () => {
                     <div className='hidden lg:block'>
                         <div className='flex'>
                             <Link to='/' className=" normal-case text-xl w-10">
-                                <img className='w-10' src="" alt="" />
+                                <img className='w-10' src='https://i.ibb.co/j4xPGmR/logos-removebg-preview.png' alt="" />
                             </Link>
-                            <Link to='/' className='mx-1 flex items-center font-bold text-2xl text-amber-500'>Widding<span className='text-white'>Phots</span></Link>
+                            <Link to='/' className='mx-1 flex items-center font-bold text-2xl text-amber-500'>Wi<span className='text-white'>dd</span>ing</Link>
                         </div>
                     </div>
                     {/* ------droup down -------------- */}
@@ -58,8 +58,9 @@ const Header = () => {
                     {/* ---------logo show md or small--------- */}
                     <div className='flex justify-start  lg:hidden'>
                         <Link to='/' className=" normal-case text-xl w-8 sm:w-6">
-                            <img className=' w-10 imates' src="" alt="" />
-                        </Link><Link to='/' className='logo-text lg:mx-1 flex items-center font-bold text-2xl text-amber-500'>Widding<span className='text-white'>Photo</span></Link>
+                            <img className=' w-10 imates' src="https://i.ibb.co/j4xPGmR/logos-removebg-preview.png" alt="" />
+                        </Link>
+                        <Link to='/' className='logo-text lg:mx-1 flex items-center font-bold text-2xl text-amber-500'>Wid<span className='text-white'>ding</span></Link>
                     </div>
                 </div>
                 {/* -----------navbar-end text btn section--------- */}
