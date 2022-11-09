@@ -7,6 +7,8 @@ import './home.css'
 
 import { Link } from 'react-router-dom';
 import useTitle from '../../hook/useTitle';
+import SectionThree from './Section-three/SectionThree';
+import SectionFoure from './Section-foure/SectionFoure';
 
 const Home = () => {
 
@@ -61,6 +63,9 @@ const Home = () => {
                     </Link>
                 </div>
             </section>
+
+            <SectionThree></SectionThree>
+            <SectionFoure></SectionFoure>
 
         </>
     );
