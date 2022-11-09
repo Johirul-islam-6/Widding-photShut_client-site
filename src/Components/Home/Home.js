@@ -13,16 +13,28 @@ import SectionFoure from './Section-foure/SectionFoure';
 const Home = () => {
 
     const [services, setServices] = useState([]);
+    const [loding, setLoder] = useState(true);
 
     useTitle('home photographer')
 
     useEffect(() => {
         fetch('https://assignment-server-site-10.vercel.app/servicesl')
             .then(res => res.json())
-            .then(data => setServices(data))
+            .then(data => {
+                setLoder(false)
+                setServices(data)
+            })
             .catch(err => err.message)
     }, [services])
     // console.log(services);
+
+    //loder
+    if (loding) {
+        // console.log("Loding runing");
+        return <div className="flex items-center justify-center space-x-1  h-[100vh]">
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+        </div>
+    }
 
     return (
         <>
@@ -37,7 +49,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <img src='https://i.ibb.co/HNPY43w/shutterstock-483268294.jpg' alt="" className="bg-opacity-80 w-3/6 mx-auto mb-12 -mt-20 rounded-lg shadow-md lg:-mt-56 dark:bg-gray-500 hidden lg:block" />
+                <img src='https://images.pexels.com/photos/108148/pexels-photo-108148.jpeg?auto=compress&cs=tinysrgb&w=600' alt="" className="bg-opacity-80 w-3/6 mx-auto mb-12 -mt-20 rounded-lg shadow-md lg:-mt-56 dark:bg-gray-500 hidden lg:block" />
             </section>
 
             {/* ----------card lisht------------ */}

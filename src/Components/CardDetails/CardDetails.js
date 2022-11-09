@@ -59,7 +59,7 @@ const CardDetails = () => {
 
             </div>
             <section>
-                <div className="h-[auto] py-10  lg:px-20 mt-10">
+                <div className="h-[auto] py-10  lg:px-20 mt-10 bgshdo">
 
                     {
                         user?.email ?

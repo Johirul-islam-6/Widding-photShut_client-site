@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../Contexts/UseContext';
 import useTitle from '../hook/useTitle';
 
@@ -13,7 +14,7 @@ const Login = () => {
     const navigat = useNavigate()
     const location = useLocation()
     const froms = location?.state?.from?.pathname || '/';
-    console.log(froms)
+
     //login errow handeling show 
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
@@ -30,13 +31,32 @@ const Login = () => {
 
             .then(result => {
                 const user = result.user
-                console.log(user);
-                navigat(froms, { replace: true })
+                //jwt token api hit
+                const currentUser = {
+                    email: user.email
+                }
+
+                fetch('https://assignment-server-site-10.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('Accesstoken', data.token);
+                        navigat(froms, { replace: true })
+                    })
+
+
+
             })
         //if password did't match
         setTimeout(() => {
             if (!password) {
-                return setSuccess("You are success fully Log in ..")
+                return toast.success("You are success fully Log in ..")
             } else {
                 return setError("Did't match you Password !")
             }
@@ -48,7 +68,9 @@ const Login = () => {
     const handleGoogleSignin = () => {
         //Google auto sing in 
         singInAutoGoogle()
+
             .then(() => {
+                toast.success('Google Login successfully.')
                 navigat(froms, { replace: true })
             }).catch(error => {
                 console.log(error)

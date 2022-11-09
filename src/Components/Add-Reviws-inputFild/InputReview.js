@@ -51,7 +51,8 @@ const InputReview = () => {
             .then(data => {
                 console.log(data);
                 if (data.acknowledged) {
-                    alert('success fully set Database')
+                    // alert('success fully set Database')
+                    toast.success('success fully set Database')
                     event.target.reset()
 
                 }

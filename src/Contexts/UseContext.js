@@ -31,12 +31,6 @@ const UseContext = ({ children }) => {
         setLoding(true)
         return updateProfile(auth?.currentUser, { displayName: name })
     }
-    //sendEmailVerification
-    // const emailVerifiCations = () => {
-    //     setLoding(true)
-    //     return sendEmailVerification(auth?.currentUser)
-    // }
-    //auto Sing in with Google
     const singInAutoGoogle = () => {
         setLoding(true)
         return signInWithPopup(auth, googleProvider)
@@ -60,7 +54,7 @@ const UseContext = ({ children }) => {
             //    setLoding(false)
             setTimeout(() => {
                 setLoding(false)
-            }, 1300);
+            }, 1000);
         })
         return () => {
             unSubscribe()

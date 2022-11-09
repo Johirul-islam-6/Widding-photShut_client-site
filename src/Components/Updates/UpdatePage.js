@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaAngleDoubleLeft } from 'react-icons/fa';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useTitle from '../../hook/useTitle';
 
 const UpdatePage = () => {
@@ -26,7 +27,8 @@ const UpdatePage = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    alert('user uptade information successs !');
+
+                    toast.success('uptade Reviews successs!')
                     navigate('/my-reviews');
 
                 } else {

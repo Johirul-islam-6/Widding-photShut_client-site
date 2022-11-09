@@ -10,8 +10,8 @@ const PrivetRoute = ({ children }) => {
     //loding condition
     if (loding) {
         // console.log("Loding runing");
-        return <div className="flex items-center justify-center space-x-1 ">
-            <progress className="progress h-1 progress-secondary"></progress>
+        return <div className="flex items-center justify-center space-x-1 mt-[67px] h-[80vh]">
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
         </div>
     }
 

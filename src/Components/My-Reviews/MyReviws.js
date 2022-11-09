@@ -13,9 +13,16 @@ const MyReviws = () => {
     const { user } = useContext(AuthContext);
 
     const [myReview, setReview] = useState([]);
-
+    // console.log(localStorage.getItem('Accesstoken'))
     useEffect(() => {
-        fetch(`https://assignment-server-site-10.vercel.app/all-reviews?email=${user?.email}`)
+        fetch(`https://assignment-server-site-10.vercel.app/all-reviews?email=${user?.email}`
+            // {
+            //     headers: {
+            //         authorization: `Bearer ${localStorage.getItem('Accesstoken')}`,
+            //     }
+
+            // }
+        )   // https://assignment-server-site-10.vercel.app/
             .then(res => res.json())
             .then(data => setReview(data))
             .catch(err => console.log(err))
@@ -37,7 +44,9 @@ const MyReviws = () => {
                 .then(data => {
                     console.log(data);
                     if (data.deletedCount > 0) {
+
                         toast.success('Delete Successfully !')
+
                         // kintu tumar page ke relode marle delete dekabe tar jonne useState
                         const remainingUser = displayUsers.filter(use => use._id !== users._id);
                         console.log(remainingUser)

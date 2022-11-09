@@ -73,3 +73,13 @@
 .borders {
   border: 3px solid rgb(132, 9, 169);
 }
+
+footer {
+  border-top: 1px solid white;
+  padding-top: 20px;
+}
+
+.bgshdo {
+  box-shadow: 5px 5px 10px 15px #0e0d13;
+  margin: 30px 20px !important;
+}

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../Contexts/UseContext';
 
 
@@ -9,7 +10,7 @@ const Header = () => {
 
     const logoutBtn = () => {
         userLogOut()
-            .then(() => console.log("user Log out!"))
+            .then(() => toast.warn('User Log Out !.'))
             .catch(error => console.log(error))
     }
 

@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# Getting Started with Create Servicees Website Connectet with Database.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+01.This project create `React` site link or deatails : [ React App install](https://reactjs.org/docs/create-a-new-react-app.html).
 
-In the project directory, you can run:
+02.This project was `tawilwnd` css with [tailwindcss install site link](https://tailwindcss.com/docs/installation).
 
-### `npm start`
+03.This project was tawilwnd library `DaisyUi` with [ DaisyUi css install site link](https://daisyui.com/components/navbar/).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+04.This project was backend data lode `Firebase` with [ Firebase Documention or install site link](https://console.firebase.google.com/).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+05.This project was `Vercel` Server site Data with [Vercel install site link](https://vercel.com/dashboard).
 
-### `npm test`
+06.This project was `GitHub push` Code Store Site  with [Github Repository create site link](https://github.com/).
+06.This project was `Database MongoDb` Data store [Connected with Database MongoDb Data Store](https://).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+# 🛠 Site Create
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* React js,
+* JavaScript,
+* Express.Js
+* Database MongoDb,
+* Firebase
+* Vercel Server site
+* Api fetch(''),
+* GitHub
+* Css Library 
+* Or Responsive
+* etc.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## `01.Step will Create Font Design Or LayOut.`
 
-### `npm run eject`
+I will create Layout Designe fully full responsive site.
+or mining full name in [Side The Code](//http:). 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## `02.Authentication Security  in You Client Site.`
+Authentication is a very important every client site.So that why I used
+firebase Document stracture follo or apply authentication security [Firebase.com](https://console.firebase.google.com/) for more information. 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## `03.Daynamic Data Loage Database MongoDb Conneted`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+I will Connected MongoDb Database & Use Server site versel.com this site uplode my Server site file. or versel give at this datas link 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## `03.Protected Adding Environment Variables`
 
-## Learn More
+I will create Environment Variables file (.env.local).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## `05.Server site Data Use Client site`
 
-### Code Splitting
+**Note: I will note every modiuls in web-programming Video or use assignment-11 !**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+I will fetch(https://web-technology-server-site.vercel.app/all-services) Data
+```javaScript
+  
+    const [services, setServices] = useState([]);
 
-### Analyzing the Bundle Size
+    useTitle('home photographer')
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    useEffect(() => {
+        fetch('https://assignment-server-site-10.vercel.app/all-services')
+            .then(res => res.json())
+            .then(data => setServices(data))
+            .catch(err => err.message)
+    }, [services])
+    // console.log(services);
 
-### Making a Progressive Web App
+`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

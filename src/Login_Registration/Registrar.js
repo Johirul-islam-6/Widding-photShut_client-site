@@ -71,6 +71,7 @@ const Registrar = () => {
                 const user = result?.user;
                 console.log(user)
                 setTimeout(() => {
+                    toast.success('your Account Create successfully')
                     navigat('/login')
                 }, 1500);
                 //Update User Name
@@ -90,8 +91,8 @@ const Registrar = () => {
     const googleBtnAutoLogIn = () => {
         googleAutoLogIn()
             .then(restult => {
-                console.log('your are success Auto logIn in Google');
-                navigat('/courses')
+                toast('your are success Auto logIn in Google');
+                navigat('/')
             }).catch(error => console.log(error))
     }
     //Ghithub auto log in part
