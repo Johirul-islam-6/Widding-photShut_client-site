@@ -40,18 +40,18 @@ const CardDetails = () => {
     return (
         <>
             <div className="div w-[100%] grid md:flex lg:flex lg:px-20 ">
-                <div className="w-[40%] px-5">
+                <div className="lg:w-[40%] px-5">
 
-                    <img src={img} alt="" className="object-cover  rounded-md xl:col-span-3 dark:bg-gray-500 w-full" />
+                    <img src={img} alt="" className="object-cover  rounded-md xl:col-span-3 md:col-span-1 dark:bg-gray-500 w-full mt-6" />
                 </div>
-                <div className="w-[56%] px-5">
+                <div className="lg:w-[56%] px-5">
                     <div className="flex justify-between">
-                        <h1 className='block mb-2 dark:text-violet-400 text-3xl text-center mt-3'>1 Hour : {price}</h1>
-                        <h1 className='block  dark:text-amber-600 text-2xl text-center mt-3'>Rasting : {rating}</h1>
+                        <h1 className='block mb-2 dark:text-violet-400 text-2xl lg:text-3xl text-center mt-3'>1 Hour : {price}</h1>
+                        <h1 className='block  dark:text-amber-600 text-2xl lg:text-3xl text-center mt-3'>Rasting : {rating}</h1>
 
                     </div>
-                    <span className="block mb-3 text-slate-300 text-bold text-3xl  my-2">{title}</span>
-                    <p className='text-[19px] '>{paragrap}.. <br></br> <br></br>Priya gets cold feet during her wedding. Asha encourages her, realizing in turn that she truly loves Ravi. She goes to his family's restaurant to see him with another woman, and gives a speech about what a great guy he is. Priya and Nick marry and introduce DJ Spellbound at the reception.</p>
+                    <span className="block mb-3 text-slate-300 text-bold text-2xl lg:text-3xl  my-2">{title}</span>
+                    <p className='text-[19px]  '>{paragrap}.. <span className='hidden lg:block'><br></br> <br></br>Priya gets cold feet during her wedding. Asha encourages her, realizing in turn that she truly loves Ravi. She goes to his family's restaurant to see him with another woman, and gives a speech about what a great guy he is. Priya and Nick marry and introduce DJ Spellbound at the reception.</span></p>
                 </div>
 
                 {/* --------------optional section----------- */}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaAngleDoubleLeft } from 'react-icons/fa';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import useTitle from '../../hook/useTitle';
 
@@ -44,6 +45,11 @@ const UpdatePage = () => {
         setUser(newUser);
     }
 
+    //Back navigate 
+    const back = () => {
+        navigate('/my-reviews')
+    }
+
     return (
         <>
             <section className="p-6 dark:bg-gray-800 dark:text-gray-50 w-[100%] justify-center lg:flex">
@@ -51,6 +57,9 @@ const UpdatePage = () => {
 
                 <form onSubmit={handleSubmitBtn} className=" w-[100%] lg:w-[50%] ">
                     <div className="">
+                        <div className='flex'> <div onClick={back} className="w-16 bg-amber-600 flex py-1 cursor-pointer ">
+                            <span className='px-1 mt-1'><FaAngleDoubleLeft></FaAngleDoubleLeft></span> <h1>Back</h1></div> </div>
+
                         <h1 className="text-center text-2xl"><span className='text-red-500'>{serviceName}</span> Service Review Add Box.</h1>
                     </div>
                     <div className="grid lg:grid-cols-1 grid-cols-1 ">
