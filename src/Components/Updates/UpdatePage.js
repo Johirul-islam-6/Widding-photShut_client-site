@@ -15,7 +15,7 @@ const UpdatePage = () => {
     const handleSubmitBtn = (event) => {
         event.preventDefault()
         // console.log(user);
-        fetch(`http://localhost:5000/all-reviews/${storeUser?._id}`, {
+        fetch(`https://assignment-server-site-10.vercel.app/all-reviews/${storeUser?._id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

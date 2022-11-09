@@ -4,9 +4,9 @@ import { AuthContext } from '../../Contexts/UseContext';
 
 const DaynamicCard = ({ user, data }) => {
 
-    console.log(user)
+    // console.log(user)
     const { customer, email, message, reting, serviceName, _id, service, img, time } = data;
-    console.log(data);
+    // console.log(data);
     return (
         <>
             <br></br>

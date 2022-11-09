@@ -14,7 +14,7 @@ const MyReviws = () => {
     const [myReview, setReview] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/all-reviews?email=${user?.email}`)
+        fetch(`https://assignment-server-site-10.vercel.app/all-reviews?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setReview(data))
             .catch(err => console.log(err))
@@ -29,7 +29,7 @@ const MyReviws = () => {
         // console.log(users);
         const agree = window.confirm(`are you sure is parson delete ${users._id}`)
         if (agree) {
-            fetch(`http://localhost:5000/all-reviews/${users._id}`, {
+            fetch(`https://assignment-server-site-10.vercel.app/all-reviews/${users._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

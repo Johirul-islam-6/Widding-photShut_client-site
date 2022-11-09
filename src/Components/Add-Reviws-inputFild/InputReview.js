@@ -39,7 +39,7 @@ const InputReview = () => {
 
         console.log(order)
 
-        fetch('http://localhost:5000/all-review', {
+        fetch('https://assignment-server-site-10.vercel.app/all-review', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

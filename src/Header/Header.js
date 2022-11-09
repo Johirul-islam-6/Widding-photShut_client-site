@@ -35,13 +35,13 @@ const Header = () => {
                         </label>
                         <ul tabIndex={0} className="lg-header hiside menu menu-compact dropdown-content  p-2  shadow bg-slate-700  rounded-box w-60  lg:hidden">
                             <Link to='/' className='btn mx-6'>Home</Link>
-                            <Link to='/about' className='btn'>About</Link>
+                            <Link to='/block' className='btn'>Block</Link>
 
                             {
                                 user?.uid ? <>
 
                                     <Link to='/my-reviews' className='btn mx-4'>My reviews</Link>
-                                    <Link to='/add-service' className='btn '>Add service</Link>
+                                    <Link to='/add-services' className='btn '>Add service</Link>
                                     <Link to='/' onClick={logoutBtn} id='logout' className='btn mx-4'>Log out</Link>
                                 </>
 
@@ -69,8 +69,8 @@ const Header = () => {
 
                         <ul className="lg-header menu menu-horizontal p-0">
                             <Link to='/' className='btn '>Home</Link>
-                            <Link to='/education' className='btn mx-6'>Education</Link>
-                            <Link to='/block' className='btn '>Block</Link>
+                            {/* <Link to='/education' className='btn mx-6'>Education</Link> */}
+                            <Link to='/block' className='btn mx-5'>Block</Link>
 
                             {
                                 user?.uid ? <>

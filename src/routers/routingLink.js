@@ -37,13 +37,13 @@ const router = createBrowserRouter([
             {
                 path: '/card_details/:id',
                 element: <CardDetails></CardDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-server-site-10.vercel.app/services/${params.id}`)
 
             },
             {
                 path: '/add-reviws/:id',
                 element: <InputReview></InputReview>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-server-site-10.vercel.app/services/${params.id}`)
             },
             {
                 path: '/my-reviews',
@@ -53,12 +53,12 @@ const router = createBrowserRouter([
             {
                 path: '/update/:id',
                 element: <UpdatePage></UpdatePage>,
-                loader: ({ params }) => fetch(`http://localhost:5000/all-reviews/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-server-site-10.vercel.app/all-reviews/${params.id}`)
 
             },
             {
                 path: '/add-services',
-                element: (<PrivetRoute><AddServices></AddServices></PrivetRoute>)
+                element: (<PrivetRoute><AddServices></AddServices></PrivetRoute>),
             },
 
             {

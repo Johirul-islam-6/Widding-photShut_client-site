@@ -14,14 +14,14 @@ const CardDetails = () => {
     const services = useLoaderData();
     const { img, title, price, rating, paragrap, _id } = services;
 
-    console.log(_id);
+    console.log(services);
     // ---------------- _id user -----------
 
     const [allReviws, setReviws] = useState([]);
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/all-review?service=${_id}`)
+        fetch(`https://assignment-server-site-10.vercel.app/all-review?service=${_id}`)
             .then(res => res.json())
             .then(data => setReviws(data))
             .catch(err => console.log(err))
