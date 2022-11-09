@@ -4,9 +4,12 @@ import useTitle from '../../hook/useTitle';
 const Block = () => {
     useTitle('Block')
     return (
-        <div>
-            this is block
-        </div>
+        <>
+            <div className='mt-16'>
+                this is block
+            </div>
+
+        </>
     );
 };
 

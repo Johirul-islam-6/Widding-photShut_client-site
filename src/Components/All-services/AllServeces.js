@@ -16,9 +16,11 @@ const AllServeces = () => {
     // console.log(services);
     return (
         <>
-            <section className='banners'>
+            <section className='banners mt-6'>
                 <div className="header">
+                    <h1 className='text-4xl text-white text-bold mt-10 text-center bg-slate-500 py-2' >All Services</h1>
                     <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 my-10 lg:px-40">
+
                         {
                             services.map((servicess, index) => <AllCards index={index} services={servicess} key={servicess.id}></AllCards>)
                         }

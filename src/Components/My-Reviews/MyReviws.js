@@ -51,7 +51,7 @@ const MyReviws = () => {
 
     return (
         <>
-            <section className="p-6 dark:bg-gray-800 dark:text-gray-100 ">
+            <section className="p-6 dark:bg-gray-800 dark:text-gray-100 mt-16">
 
                 <div className="grid gap-6 my-16 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:mx-20">
                     {

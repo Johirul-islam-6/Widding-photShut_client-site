@@ -77,7 +77,7 @@ const Login = () => {
 
     return (
         <div>
-            <div className='flex justify-center items-center pt-8 mx-5'>
+            <div className='flex justify-center items-center pt-8 mx-5 mt-16'>
                 <div className='flex flex-col max-w-md px-6 py-2 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
                     <div className='mb-8 text-center'>
                         <h1 className='my-3 text-4xl font-bold'><span className='text-amber-700'>Si</span>ng in</h1>

@@ -39,7 +39,7 @@ const CardDetails = () => {
 
     return (
         <>
-            <div className="div w-[100%] grid md:flex lg:flex lg:px-20 ">
+            <div className="div w-[100%] grid md:flex lg:flex lg:px-20 mt-16">
                 <div className="lg:w-[40%] px-5">
 
                     <img src={img} alt="" className="object-cover  rounded-md xl:col-span-3 md:col-span-1 dark:bg-gray-500 w-full mt-6" />

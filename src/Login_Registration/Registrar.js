@@ -101,7 +101,7 @@ const Registrar = () => {
 
     return (
         <>
-            <div className='reGistration flex justify-center items-center pt-5 mx-5'>
+            <div className='reGistration flex justify-center items-center pt-5 mx-5 mt-16'>
                 <div className='flex flex-col max-w-md  rounded-md sm:px-10 px-7 sm:py-3 py-1 bg-gray-100 text-gray-900'>
                     <div className='mb-3 text-center'>
                         <h1 className='mb-1 mt-1 text-4xl font-bold text-gray-900'><span className='text-amber-700'>Re</span>gister</h1>

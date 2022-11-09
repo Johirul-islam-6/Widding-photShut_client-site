@@ -73,7 +73,7 @@ const InputReview = () => {
 
     return (
         <>
-            <section className="p-6 dark:bg-gray-800 dark:text-gray-50 w-[100%] justify-center lg:flex">
+            <section className="p-6 dark:bg-gray-800 dark:text-gray-50 w-[100%] justify-center lg:flex mt-16">
 
 
                 <form onSubmit={handleSubmitBtn} className=" w-[100%] lg:w-[50%] ">

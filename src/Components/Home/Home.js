@@ -25,13 +25,13 @@ const Home = () => {
     return (
         <>
             <section>
-                <div className=" w-full gradientBg">
+                <div className=" w-full gradientBg mt-16">
                     <div className="container flex flex-col items-center px-4 py-16 pb-24 mx-auto text-center lg:pb-56 md:py-14 md:px-10 lg:px-32 dark:text-gray-900">
                         <h1 className="text-5xl font-bold leading-none sm:text-6xl xl:max-w-3xl text-white pb-8 text-shadows">Wedding Season 2022</h1>
                         <p className="mt-6 mb-0 text-lg sm:mb-0 xl:max-w-3xl dark:text-gray-900 lg:hidden">Cupiditate minima voluptate temporibus quia? Architecto beatae esse ab amet vero eaque explicabo!</p>
                         <div className="flex flex-wrap justify-center">
-                            <button type="button" className="px-8 py-3 m-2 text-lg font-semibold rounded dark:bg-gray-800 dark:text-gray-50 lg:hidden">Get started</button>
-                            <button type="button" className="px-8 py-3 m-2 text-lg border rounded dark:border-gray-700 dark:text-gray-900  lg:hidden">Learn more</button>
+                            <Link to='/login'><button type="button" className="px-8 py-3 m-2 text-lg font-semibold rounded dark:bg-gray-800 dark:text-gray-50 lg:hidden">Get started</button></Link>
+                            <Link to='/all-services'> <button type="button" className="px-8 py-3 m-2 text-lg border rounded dark:border-gray-700 text-white  lg:hidden">Services</button></Link>
                         </div>
                     </div>
                 </div>
