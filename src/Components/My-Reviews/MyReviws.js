@@ -2,8 +2,9 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
-import { FaRegTrashAlt, FaSortAmountUpAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+
 import { AuthContext } from '../../Contexts/UseContext';
 import useTitle from '../../hook/useTitle';
 
@@ -36,7 +37,7 @@ const MyReviws = () => {
                 .then(data => {
                     console.log(data);
                     if (data.deletedCount > 0) {
-                        alert("User delete now successfully !");
+                        toast.success('Delete Successfully !')
                         // kintu tumar page ke relode marle delete dekabe tar jonne useState
                         const remainingUser = displayUsers.filter(use => use._id !== users._id);
                         console.log(remainingUser)

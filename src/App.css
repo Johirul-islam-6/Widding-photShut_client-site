@@ -69,3 +69,7 @@
   position: fixed;
   top: 0;
 }
+
+.borders {
+  border: 3px solid rgb(132, 9, 169);
+}

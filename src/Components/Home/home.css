@@ -25,8 +25,14 @@ img {
 
 .card {
     border: 5px solid rgb(121, 121, 121);
+    margin: 0 5px !important;
     margin-top: 20px !important;
+
     background: linear-gradient(145deg, rgb(16, 16, 16) 60%, rgba(44, 111, 246, 0.712));
+}
+
+.card img {
+    border-radius: 10px 10px 0 0 !important;
 }
 
 .gradientBg {

@@ -10,10 +10,7 @@ import UseContext from './Contexts/UseContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-
-
-
-    <div className=''>
+    <div className='dark:bg-gray-800'>
       <UseContext>
         <App />
       </UseContext>
