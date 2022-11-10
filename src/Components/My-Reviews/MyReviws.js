@@ -10,22 +10,32 @@ import useTitle from '../../hook/useTitle';
 
 const MyReviws = () => {
     useTitle('My-Reviews')
-    const { user } = useContext(AuthContext);
+    const { user, userLogOut } = useContext(AuthContext);
 
     const [myReview, setReview] = useState([]);
     useEffect(() => {
         fetch(`https://assignment-server-site-10.vercel.app/all-reviews?email=${user?.email}`, {
             headers: {
-                authorization: `Bearer ${localStorage.getItem('Accesstoken')}`,
-                allo: "fire asbo na"
+                authorization: `Bearer ${localStorage.getItem('Accesstoken')}`
             }
 
-        }
-        )   // https://assignment-server-site-10.vercel.app/
-            .then(res => res.json())
-            .then(data => setReview(data))
+        })
+            .then(res => {
+
+                if (res.status === 401 || res.status === 403) {
+                    userLogOut()
+                }
+
+                return res.json()
+            })
+            .then(data => {
+
+                setReview(data)
+            })
             .catch(err => console.log(err))
-    }, [myReview])
+    }, [user?.email, myReview])
+
+
 
     // console.log(myReview)
 

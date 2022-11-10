@@ -68,12 +68,39 @@ const Registrar = () => {
         //createUser information
         creatUser(email, password)
             .then(result => {
-                const user = result?.user;
+                const user = result.user
+
+                // jwt token
+
+                const currentUser = {
+                    email: user.email
+                }
+                console.log(currentUser);
+
+                fetch('https://assignment-server-site-10.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    // ----end---
+                    .then(res => res.json())
+                    .then(data => {
+                        setTimeout(() => {
+                            toast.info('JWT টোকেনের মেয়াদ থাকবে ১  দিন ।')
+                        }, 10)
+                        localStorage.setItem('Accesstoken', data.token);
+                        navigat('/')
+                    })
+
+
+
                 console.log(user)
                 setTimeout(() => {
                     toast.success('your Account Create successfully')
                     navigat('/login')
-                }, 1500);
+                }, 1700);
                 //Update User Name
                 upDateUser(name)
                     .then(() => {
@@ -89,9 +116,38 @@ const Registrar = () => {
 
     //google auto log in part
     const googleBtnAutoLogIn = () => {
-        googleAutoLogIn()
+        singInAutoGoogle()
             .then(restult => {
-                toast('your are success Auto logIn in Google');
+                const user = restult.user
+
+                // jwt token
+
+                const currentUser = {
+                    email: user.email
+                }
+                console.log(currentUser);
+
+                fetch('https://assignment-server-site-10.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    // ----end---
+                    .then(res => res.json())
+                    .then(data => {
+                        setTimeout(() => {
+                            toast.info('JWT টোকেনের মেয়াদ থাকবে ১  দিন ।')
+                        }, 10)
+                        localStorage.setItem('Accesstoken', data.token);
+                        navigat('/')
+                    })
+
+
+                setTimeout(() => {
+                    toast('your are success Auto logIn in Google');
+                }, 1700)
                 navigat('/')
             }).catch(error => console.log(error))
     }

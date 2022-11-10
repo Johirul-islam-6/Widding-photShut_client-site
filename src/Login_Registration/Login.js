@@ -31,7 +31,8 @@ const Login = () => {
 
             .then(result => {
                 const user = result.user
-                //jwt token api hit
+
+                // jwt token
                 const currentUser = {
                     email: user.email
                 }
@@ -47,15 +48,17 @@ const Login = () => {
                     // ----end---
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        setTimeout(() => {
+                            toast.info('JWT টোকেনের মেয়াদ থাকবে ১  দিন ।')
+                        }, 10)
                         localStorage.setItem('Accesstoken', data.token);
+                        setTimeout(() => {
+                            toast.success('your are success logIn in');
+                        }, 2000)
                         navigat(froms, { replace: true })
                     })
-
-
-
             })
-        //if password did't match
+        //if password did't match  navigat(froms, { replace: true })
         setTimeout(() => {
             if (!password) {
                 return toast.success("You are success fully Log in ..")
@@ -71,11 +74,13 @@ const Login = () => {
         //Google auto sing in 
         singInAutoGoogle()
 
-            .then((res) => {
-                const users = res.user;
-                // ----start---
+            .then(res => {
+                const user = res.user
+
+                // jwt token
+
                 const currentUser = {
-                    email: users.email
+                    email: user.email
                 }
                 console.log(currentUser);
 
@@ -86,8 +91,20 @@ const Login = () => {
                     },
                     body: JSON.stringify(currentUser)
                 })
+                    // ----end---
+                    .then(res => res.json())
+                    .then(data => {
+                        setTimeout(() => {
+                            toast.info('JWT টোকেনের মেয়াদ থাকবে ১  দিন ।')
+                        }, 10)
+                        localStorage.setItem('Accesstoken', data.token);
+                        navigat('/')
+                    })
                 // ----next---
-                toast.success('Google Login successfully.')
+                setTimeout(() => {
+                    toast.success('Google Login successfully.')
+                }, 1700)
+
                 navigat(froms, { replace: true })
             }).catch(error => {
                 console.log(error)
