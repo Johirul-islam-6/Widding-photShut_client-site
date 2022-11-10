@@ -35,6 +35,7 @@ const Login = () => {
                 const currentUser = {
                     email: user.email
                 }
+                console.log(currentUser);
 
                 fetch('https://assignment-server-site-10.vercel.app/jwt', {
                     method: 'POST',
@@ -43,6 +44,7 @@ const Login = () => {
                     },
                     body: JSON.stringify(currentUser)
                 })
+                    // ----end---
                     .then(res => res.json())
                     .then(data => {
                         console.log(data);
@@ -69,7 +71,22 @@ const Login = () => {
         //Google auto sing in 
         singInAutoGoogle()
 
-            .then(() => {
+            .then((res) => {
+                const users = res.user;
+                // ----start---
+                const currentUser = {
+                    email: users.email
+                }
+                console.log(currentUser);
+
+                fetch('https://assignment-server-site-10.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                // ----next---
                 toast.success('Google Login successfully.')
                 navigat(froms, { replace: true })
             }).catch(error => {

@@ -125,7 +125,6 @@ const CardDetails = () => {
                     <div className="overflow-x-auto w-full">
                         <table className="table w-full">
 
-
                             {
                                 allReviws.length > 0 ?
                                     <>
